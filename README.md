@@ -1,32 +1,120 @@
-<h1>MySQL CRUD - Nodejs, Reactjs</h1>
+<h1>postgre CRUD - Nodejs, Reactjs</h1>
 
-<p>This app allows users to save users with name and email with specific id for everyone, featuring functionalities like create, read, update, delete. It uses MySQL as the database to store users, Express.js for handling server-side logic, React.js for building the user interface, and Node.js for server-side runtime environment. The app provides a seamless experience for users to save users and time.</p>
-<h3>Running the Project Locally</h3>
-  <p>To run this project on your local machine, follow these steps:
 
-1. <b>Clone the Repository</b>: Clone this repository to your local machine:
 
-   git clone <repository_url>
+ # PostgreSQL CRUD Application - Node.js, React, Docker
+This application provides a user management system with CRUD operations (Create, Read, Update, Delete). It uses PostgreSQL for the database, Express.js for the backend API, React.js for the frontend UI, and Docker for containerization. The entire stack is orchestrated using Docker Compose with Nginx as a reverse proxy.
+## Features
+ Create, Read, Update, and Delete users
+ Containerized application using Docker
+ PostgreSQL database with persistent storage
+ Nginx reverse proxy for routing
+ React frontend with Bootstrap styling
+ RESTful API backend
+## Prerequisites
+ake sure you have the following installed:
+ [Docker](https://docs.docker.com/get-docker/)
+ [Docker Compose](https://docs.docker.com/compose/install/)
+## Quick Start
+1. **Clone the Repository**
+  ```bash
+  git clone <repository_url>
+  cd <project_directory>
+  ```
+2. **Environment Setup**
+   Backend (.env):
+  ```env
+  DB_HOST=db
+  DB_USER=postgres
+  DB_PASSWORD=728728
+  DB_DATABASE=crud_operations
+  DB_PORT=5432
+  PORT=3000
+  ```
+   Frontend (.env):
+  ```env
+  VITE_API_URL=http://localhost:8080/api
+  ```
+3. **Build and Run with Docker Compose**
+  ```bash
+  docker-compose up --build
+  ```
+4. **Access the Application**
+  - Frontend: http://localhost:8080
+  - API: http://localhost:8080/api
+## Docker Services
+### Frontend Container
+ React application built with Vite
+ Served through Nginx
+ Port: 80 (internal)
+### Backend Container
+ Node.js/Express API
+ Connected to PostgreSQL
+ Port: 3000 (internal)
+### Database Container
+ PostgreSQL 13
+ Persistent volume storage
+ Port: 5432 (internal)
+### Nginx Reverse Proxy
+ Routes traffic to frontend and backend
+ Port: 8080 (exposed)
+## Development
+### Local Development without Docker
+. **Backend Setup**
+  ```bash
+  cd backend
+  npm install
+  # Update .env with local PostgreSQL settings
+  npm start
+  ```
+2. **Frontend Setup**
+  ```bash
+  cd frontend
+  npm install
+  # Update .env with local API URL
+  npm run dev
+  ```
+### With Docker
+ Make changes to the code
+ Rebuild containers: `docker-compose up --build`
+ View logs: `docker-compose logs -f [service_name]`
+## Troubleshooting
+### Database Connection Issues
 
-2. <b>Navigate to Project Directory</b>: Move into the project directory:
+## Services
 
-   cd <project_directory>
+The application consists of four main services:
 
-3. <b>Install Dependencies</b>: Install the necessary dependencies using npm or yarn:
+1. **Frontend (React)**
+   - Built with Vite and React
+   - Served through Nginx
+   - Includes Bootstrap for styling
+   - Features a responsive UI for CRUD operations
 
-   npm install
+2. **Backend (Node.js/Express)**
+   - RESTful API endpoints
+   - PostgreSQL database connection
+   - Environment variable configuration
 
-   or
+3. **Database (PostgreSQL)**
+   - Persistent data storage
+   - Automatic database initialization
+   - Health checks implemented
 
-   yarn
+4. **Nginx (Reverse Proxy)**
+   - Routes requests to appropriate services
+   - Handles API and frontend routing
+   - Configured for production use
 
-4. <b>Setup Environment Variables</b>: Create a `.env` file in the root of your project directory and add the variables given in `.env.sample`
+## API Endpoints
 
-5. <b>Start the Development Server</b>: Run the following command to start the development server:
+- `GET /api` - Retrieve all users
+- `POST /api` - Create a new user
+- `PUT /api` - Update an existing user
+- `DELETE /api` - Delete a user
 
-   npm start
+## Development
 
-6. <b>Access the App</b>: Open your web browser and navigate to  frontend `http://localhost:5000` to access the app. You can now use the app locally on your machine, connected to your MySQL database using the variables specified in the `.env` file.
+To make changes to the application:
+to start running : docker-compose up --build      
 
-7. <b>Note</b>: The project may not work if you do not install dependencies in both front end and backend. So you would have to apply step 2 and 3 twice, once in frontend and once in backend.
-</p>
